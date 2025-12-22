@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Monaco 编辑器 - 黑红主题修复
+   Monaco Editor - Crimson & Black Theme Enhancement
+   ========================================================================== */
+
+/* 1. 基础背景：深色磨砂玻璃效果 
+   1. Base Background: Dark frosted-glass effect */
+.monaco-editor, 
+.monaco-editor-background,
+.monaco-editor .margin {
+    background-color: rgba(20, 22, 24, 0.85) !important; /* 深色半透明背景 / Dark semi-transparent background */
+    backdrop-filter: blur(12px) !important; /* 背景模糊效果 / Background blur effect */
+    border-radius: 8px !important; /* 容器圆角 / Container border radius */
+}
+
+/* 2. 选中区域：绯红主题高亮 
+   2. Selection Area: Crimson highlight */
+.monaco-editor .view-overlays .selected-text,
+.monaco-editor .view-overlays .selection-highlight,
+.monaco-editor .focused .selected-text {
+    background-color: rgba(220, 10, 50, 0.35) !important; /* 绯红半透明 / Semi-transparent crimson */
+    border: 1px solid rgba(255, 215, 0, 0.3) !important; /* 金色细边框 / Subtle gold border */
+    border-radius: 3px !important; /* 选区微圆角 / Selection slight rounding */
+    z-index: 5 !important;
+}
+
+/* 3. 当前行：柔和流光指示 
+   3. Current Line: Soft glowing indicator */
+.monaco-editor .view-overlays .current-line {
+    background: linear-gradient(90deg, 
+        rgba(255, 50, 50, 0.1) 0%, 
+        rgba(255, 50, 50, 0.02) 100%) !important; /* 红色水平渐变 / Red horizontal gradient */
+    border-left: 2px solid rgba(255, 80, 80, 0.8) !important; /* 左侧红色指示条 / Red left-border indicator */
+}
+
+/* 4. 语法高亮：霓虹风格增强 
+   4. Syntax Highlighting: Neon style enhancement */
+.monaco-editor .mtk1  { color: #eeeeee !important; } /* 普通代码 (浅灰) / Normal text (Light gray) */
+.monaco-editor .mtk2  { color: #9cdcfe !important; } /* 变量 (浅蓝) / Variables (Light blue) */
+.monaco-editor .mtk3  { color: #ff9f80 !important; } /* 字符串 (橙粉) / Strings (Salmon) */
+.monaco-editor .mtk4  { color: #ff6b8b !important; } /* 关键字 (霓虹红) / Keywords (Neon red) */
+.monaco-editor .mtk5  { color: #b5cea8 !important; } /* 数字 (草绿) / Numbers (Grass green) */
+.monaco-editor .mtk6  { color: #8dc891 !important; font-style: italic; } /* 注释 (斜体绿) / Comments (Italic green) */
+.monaco-editor .mtk7  { color: #dcdcaa !important; } /* 函数名 (淡黄) / Function names (Pale yellow) */
+.monaco-editor .mtk8  { color: #c586c0 !important; } /* 类型 (紫色) / Types (Purple) */
+
+/* 5. 交互元素：光标与滚动条 
+   5. Interaction: Cursor & Scrollbar */
+.monaco-editor .cursor {
+    background-color: #ff3333 !important; /* 红色光标 / Red cursor */
+    box-shadow: 0 0 8px rgba(255, 50, 50, 0.8); /* 呼吸灯效果 / Glowing effect */
+}
+.monaco-editor .scrollbar .slider {
+    background: rgba(180, 30, 30, 0.5) !important; /* 红色滑块 / Crimson slider */
+    border-radius: 6px !important;
+}
+
+/* 6. 悬浮提示框：深红面板 
+   6. Hover Widget: Dark crimson panel */
+.monaco-editor-hover, .monaco-hover {
+    background-color: rgba(25, 5, 5, 0.95) !important; /* 接近黑色深红 / Near-black crimson */
+    border: 1px solid rgba(220, 20, 60, 0.5) !important; /* 绯红边框 / Crimson border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important; /* 浮空投影 / Drop shadow */
+    color: #ffe6e6 !important; /* 浅粉白文字 / Pale pink-white text */
+}

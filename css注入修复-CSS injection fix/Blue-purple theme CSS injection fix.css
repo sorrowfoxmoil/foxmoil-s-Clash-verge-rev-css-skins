@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Monaco 编辑器 - 蓝紫主题修复
+   Monaco Editor - Blue & Purple Theme Enhancement
+   ========================================================================== */
+
+/* 1. 基础背景：深空蓝紫磨砂 
+   1. Base Background: Deep space blue-purple frosted glass */
+.monaco-editor, 
+.monaco-editor-background,
+.monaco-editor .margin {
+    background-color: rgba(13, 13, 35, 0.85) !important; /* 深蓝紫半透明 / Deep blue-purple semi-transparent */
+    backdrop-filter: blur(12px) !important; /* 磨砂效果 / Frosted glass effect */
+    border-radius: 8px !important;
+}
+
+/* 2. 选中区域：电光紫 
+   2. Selection Area: Electric violet beam */
+.monaco-editor .view-overlays .selected-text,
+.monaco-editor .view-overlays .selection-highlight,
+.monaco-editor .focused .selected-text {
+    background-color: rgba(120, 80, 255, 0.35) !important; /* 半透明紫色 / Semi-transparent purple */
+    border: 1px solid rgba(160, 130, 255, 0.4) !important; /* 紫色发光边框 / Purple glow border */
+    box-shadow: 0 0 10px rgba(120, 80, 255, 0.2) !important;
+}
+
+/* 3. 当前行：极光蓝渐变 
+   3. Current Line: Aurora blue gradient */
+.monaco-editor .view-overlays .current-line {
+    background: linear-gradient(90deg, 
+        rgba(80, 200, 255, 0.1) 0%, 
+        rgba(80, 200, 255, 0.01) 100%) !important; /* 蓝调渐变 / Blueish gradient */
+    border-left: 2px solid rgba(100, 220, 255, 0.8) !important; /* 青蓝指示条 / Cyan indicator bar */
+}
+
+/* 4. 语法高亮：冷色霓虹 
+   4. Syntax Highlighting: Cool-tone neon */
+.monaco-editor .mtk1 { color: #e0e0ff !important; } /* 普通代码 (冷白) / Normal text (Cool white) */
+.monaco-editor .mtk2 { color: #9cdcfe !important; } /* 变量 (天蓝) / Variables (Sky blue) */
+.monaco-editor .mtk3 { color: #ff9ce6 !important; } /* 字符串 (粉紫) / Strings (Pink-purple) */
+.monaco-editor .mtk4 { color: #bd93f9 !important; } /* 关键字 (亮紫色) / Keywords (Bright purple) */
+.monaco-editor .mtk5 { color: #8be9fd !important; } /* 数字 (青色) / Numbers (Cyan) */
+.monaco-editor .mtk7 { color: #f1fa8c !important; } /* 函数 (淡黄) / Functions (Pale yellow) */
+
+/* 5. 交互元素：闪烁电光 
+   5. Interaction: Electric glow */
+.monaco-editor .cursor {
+    background-color: #bd93f9 !important; /* 电光紫光标 / Electric violet cursor */
+    box-shadow: 0 0 10px rgba(189, 147, 249, 0.8); /* 发光效果 / Glowing effect */
+}
+.monaco-editor .scrollbar .slider {
+    background: rgba(100, 70, 220, 0.5) !important; /* 深紫滑块 / Deep purple slider */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 6. 提示面板：全息玻璃风格 
+   6. Hover Widget: Holographic glass panel */
+.monaco-editor-hover, .monaco-hover {
+    background-color: rgba(13, 13, 35, 0.95) !important; /* 深蓝紫底色 / Deep blue-purple background */
+    border: 1px solid rgba(140, 110, 255, 0.5) !important; /* 霓虹紫边框 / Neon purple border */
+    backdrop-filter: blur(12px) !important;
+}
+.monaco-editor-hover a, .monaco-hover a {
+    color: #4dc4ff !important; /* 链接改为天蓝 / Links changed to sky blue */
+    text-shadow: 0 0 8px rgba(77, 196, 255, 0.8); /* 悬停发光 / Hover glow */
+}
