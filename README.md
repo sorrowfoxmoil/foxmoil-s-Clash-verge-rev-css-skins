@@ -88,7 +88,7 @@
 
 ## 🧩 用法 / Usage
 
-直接将 `<code>css部分</code>` 复制到现有的 `<code>css</code>` 末尾即可。  
+直接将 `css部分` 复制到现有的 `css` 末尾即可。  
 *Simply copy the provided CSS snippet to the end of your existing CSS.*
 
 ## 🔍 对比 / Compare
