@@ -73,6 +73,38 @@
 
 </details>
 
+<details>
+ <summary> <h2> 🔧修复了代码编辑器的不易读性问题 / Fixing Code Editor Readability</h2> </summary>
+
+  ## ❓ 为什么需要修复 / Why This Fix Is Needed
+
+- **原因 / Reason**  
+  CSS 主题使用了非常暴力的全局样式，这虽然能让整个界面变得通透好看，但会破坏 **代码编辑器** 的原生样式。  
+  *The CSS theme applies aggressive global styles. While visually appealing, they break the code editor’s built‑in styling.*
+
+- **目的 / Purpose**  
+  修复代码编辑器的可读性，并为当前主题做出适配。  
+  *Restore readability in the code editor and ensure proper theme compatibility.*
+
+## 🧩 用法 / Usage
+
+直接将 `<code>css部分</code>` 复制到现有的 `<code>css</code>` 末尾即可。  
+*Simply copy the provided CSS snippet to the end of your existing CSS.*
+
+## 🔍 对比 / Compare
+
+以黑红主题为例  
+*Example: Black‑Red Theme*
+
+<p align="center">
+<img width="45%" alt="image" src="https://github.com/user-attachments/assets/addd65a5-f833-4044-a724-1023db5770f2" />
+<img width="45%" alt="image" src="https://github.com/user-attachments/assets/5cbbb6f2-49c9-43f8-a5ac-2a9dfb99bb7f" />
+</p>
+
+</details>
+
+
+
 <h2>深色主题</h2>
 
 ### 🔴🔵 流光 / Transparent Red & Blue-Violet
