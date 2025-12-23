@@ -1,69 +1,102 @@
 /* ==========================================================================
-   开关组件像素对齐修复补丁
-   Switch Component Pixel-Perfect Alignment Fix
+   开关组件像素级完美对齐修复补丁 (修正流光版)
+   Switch Component Pixel-Perfect Alignment Fix (Flowing Light Fixed)
    ========================================================================== */
 
-/* 1. 强制根容器垂直居中，防止因 Padding 导致的内部偏移 */
-/* 1. Force vertical centering on root to prevent offsets caused by padding */
+/* 1. 重置根容器尺寸与对齐，修复流光溢出问题 */
+/* 1. Reset Root dimensions and alignment, fix flowing light overflow */
 .MuiSwitch-root {
+    /* 核心修复：强制移除主题带来的巨大内边距，使容器贴合轨道 */
+    /* Core Fix: Force remove theme padding so container wraps track tightly */
+    padding: 0 !important;
+    width: 44px !important;  /* 强制固定宽度 */
+    height: 24px !important; /* 强制固定高度 */
+    
     display: inline-flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: center !important; /* 确保内部元素居中 */
     box-sizing: border-box !important;
-    /* 允许内容溢出以显示完整的阴影和流光 / Allow overflow for shadows */
-    overflow: visible !important; 
+    
+    /* 移除根容器的背景和边框，移交给 Track 处理，避免双重边框 */
+    /* Remove root background/border, let Track handle it to avoid duplication */
+    background: transparent !important;
+    border: none !important;
+    
+    /* 关键：恢复 overflow hidden 并设置圆角，限制流光在胶囊内部 */
+    /* Crucial: Restore overflow hidden & radius to clip the light inside the capsule */
+    overflow: hidden !important; 
+    border-radius: 12px !important;
+    
+    /* 保持原有的垂直外边距 */
+    margin: 8px 0 !important;
 }
 
-/* 2. 规范化轨道 (Track) 尺寸 - 确保它是标准的圆角矩形 */
-/* 2. Normalize Track dimensions - ensure standard rounded rectangle */
+/* 2. 规范化轨道 (Track) - 作为实际的视觉背景 */
+/* 2. Normalize Track - acts as the actual visual background */
 .MuiSwitch-track {
-    height: 24px !important;        /* 固定高度 / Fixed height */
-    min-width: 44px !important;     /* 固定宽度 / Fixed width */
-    border-radius: 12px !important; /* 高度的一半，确保完美圆形 / Half of height */
-    margin: 0 !important;           /* 移除默认边距 / Remove default margin */
+    height: 24px !important;
+    width: 44px !important;
+    border-radius: 12px !important;
+    margin: 0 !important;
     opacity: 1 !important;
     box-sizing: border-box !important;
-    /* 确保轨道在容器内相对定位 / Ensure track is relatively positioned */
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
-    transform: none !important;
+    position: absolute !important; /* 绝对定位充满容器 */
+    top: 0 !important;
+    left: 0 !important;
+    
+    /* 继承原主题的背景色，确保未选中时也有颜色 */
+    background: rgba(120, 0, 0, 0.5) !important;
+    border: 1px solid rgba(140, 0, 0, 0.4) !important; /* 在这里加回边框 */
 }
 
-/* 3. 重置滑块容器 (SwitchBase) - 移除默认的触摸波纹内边距 */
-/* 3. Reset SwitchBase - remove default ripple padding */
+/* 3. 重置滑块容器 (SwitchBase) */
+/* 3. Reset SwitchBase */
 .MuiSwitch-switchBase {
-    padding: 0 !important;          /* 关键：移除9px的默认内边距 / Crucial: remove default padding */
-    position: absolute !important;  /* 绝对定位 / Absolute positioning */
-    top: 50% !important;            /* 垂直居中起点 / Vertical center start */
-    left: 2px !important;           /* 距离轨道左侧 2px (关闭状态) / 2px from left (Off state) */
-    transform: translateY(-50%) !important; /* 修正垂直居中 / Correct vertical center */
+    padding: 0 !important;
+    position: absolute !important;
+    top: 2px !important;     /* 固定顶部距离 */
+    left: 2px !important;    /* 固定左侧距离 (关闭状态) */
+    transform: none !important; /* 移除默认的 transform 居中，使用 top/left 定位 */
     margin: 0 !important;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    z-index: 2 !important;          /* 确保滑块在轨道上方 / Ensure thumb is above track */
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; /* 改用 left 过渡 */
+    z-index: 2 !important;
+    width: 20px !important;
+    height: 20px !important;
 }
 
-/* 4. 规范化滑块 (Thumb) 尺寸 - 确保比轨道小，产生“内嵌”效果 */
-/* 4. Normalize Thumb dimensions - smaller than track for "inset" look */
+/* 4. 规范化滑块 (Thumb) */
+/* 4. Normalize Thumb */
 .MuiSwitch-thumb {
-    width: 20px !important;         /* 24px(轨道) - 2px(上) - 2px(下) = 20px */
+    width: 20px !important;
     height: 20px !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
     box-sizing: border-box !important;
 }
 
-/* 5. 修正选中状态下的位移计算 */
-/* 5. Fix displacement calculation for Checked state */
-/* 计算公式：轨道宽(44) - 滑块宽(20) - 左间距(2) - 右间距(2) = 20px 位移 */
+/* 5. 修正选中状态下的位移 */
+/* 5. Fix displacement for Checked state */
 .MuiSwitch-switchBase.Mui-checked {
-    /* 保持垂直居中，同时横向移动20px / Maintain vertical center, move right 20px */
-    transform: translateY(-50%) translateX(20px) !important; 
-    left: 2px !important; /* 保持基准 left 不变 / Keep base left constant */
-    right: auto !important;
+    transform: none !important; /* 不使用 translate，直接改变 left */
+    left: 22px !important;      /* 44px(宽) - 20px(滑块) - 2px(右间距) = 22px */
+    top: 2px !important;
 }
 
-/* 6. 修复部分界面中开关右侧可能出现的异常间距 */
-/* 6. Fix abnormal spacing on the right side in some UIs */
+/* 选中状态下的轨道样式修正 */
+.MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+    background: rgba(218, 165, 32, 0.6) !important;
+    opacity: 1 !important;
+}
+
+/* 6. 修复流光动画的位置 (针对 Root 尺寸改变后的适配) */
+/* 6. Fix Flowing Light position adaptation */
+.MuiSwitch-root:hover::before {
+    /* 确保流光层在最底层但可见 */
+    z-index: 0 !important; 
+    /* 因为 Root 现在就是 44x24，流光会完美覆盖 */
+}
+
+/* 7. 修复部分界面文字间距 */
+/* 7. Fix typography spacing */
 .MuiSwitch-root + .MuiTypography-root {
     margin-left: 12px !important;
 }
