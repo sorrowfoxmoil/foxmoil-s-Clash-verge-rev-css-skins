@@ -1,0 +1,69 @@
+/* ==========================================================================
+   开关组件像素对齐修复补丁
+   Switch Component Pixel-Perfect Alignment Fix
+   ========================================================================== */
+
+/* 1. 强制根容器垂直居中，防止因 Padding 导致的内部偏移 */
+/* 1. Force vertical centering on root to prevent offsets caused by padding */
+.MuiSwitch-root {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box !important;
+    /* 允许内容溢出以显示完整的阴影和流光 / Allow overflow for shadows */
+    overflow: visible !important; 
+}
+
+/* 2. 规范化轨道 (Track) 尺寸 - 确保它是标准的圆角矩形 */
+/* 2. Normalize Track dimensions - ensure standard rounded rectangle */
+.MuiSwitch-track {
+    height: 24px !important;        /* 固定高度 / Fixed height */
+    min-width: 44px !important;     /* 固定宽度 / Fixed width */
+    border-radius: 12px !important; /* 高度的一半，确保完美圆形 / Half of height */
+    margin: 0 !important;           /* 移除默认边距 / Remove default margin */
+    opacity: 1 !important;
+    box-sizing: border-box !important;
+    /* 确保轨道在容器内相对定位 / Ensure track is relatively positioned */
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+}
+
+/* 3. 重置滑块容器 (SwitchBase) - 移除默认的触摸波纹内边距 */
+/* 3. Reset SwitchBase - remove default ripple padding */
+.MuiSwitch-switchBase {
+    padding: 0 !important;          /* 关键：移除9px的默认内边距 / Crucial: remove default padding */
+    position: absolute !important;  /* 绝对定位 / Absolute positioning */
+    top: 50% !important;            /* 垂直居中起点 / Vertical center start */
+    left: 2px !important;           /* 距离轨道左侧 2px (关闭状态) / 2px from left (Off state) */
+    transform: translateY(-50%) !important; /* 修正垂直居中 / Correct vertical center */
+    margin: 0 !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 2 !important;          /* 确保滑块在轨道上方 / Ensure thumb is above track */
+}
+
+/* 4. 规范化滑块 (Thumb) 尺寸 - 确保比轨道小，产生“内嵌”效果 */
+/* 4. Normalize Thumb dimensions - smaller than track for "inset" look */
+.MuiSwitch-thumb {
+    width: 20px !important;         /* 24px(轨道) - 2px(上) - 2px(下) = 20px */
+    height: 20px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4) !important;
+    box-sizing: border-box !important;
+}
+
+/* 5. 修正选中状态下的位移计算 */
+/* 5. Fix displacement calculation for Checked state */
+/* 计算公式：轨道宽(44) - 滑块宽(20) - 左间距(2) - 右间距(2) = 20px 位移 */
+.MuiSwitch-switchBase.Mui-checked {
+    /* 保持垂直居中，同时横向移动20px / Maintain vertical center, move right 20px */
+    transform: translateY(-50%) translateX(20px) !important; 
+    left: 2px !important; /* 保持基准 left 不变 / Keep base left constant */
+    right: auto !important;
+}
+
+/* 6. 修复部分界面中开关右侧可能出现的异常间距 */
+/* 6. Fix abnormal spacing on the right side in some UIs */
+.MuiSwitch-root + .MuiTypography-root {
+    margin-left: 12px !important;
+}
