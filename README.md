@@ -137,8 +137,9 @@
 <summary> <h2>⚠️ 已知问题</h2></summary>
 
 - **透明度过高**：部分组件透明度过高，导致重叠  
-  <img src="https://github.com/user-attachments/assets/046396b3-355f-4e2d-8349-94d53ee91ee9" height="300" />
-
+ <div>
+ <img src="https://github.com/user-attachments/assets/046396b3-355f-4e2d-8349-94d53ee91ee9" height="300" />
+</div>
 - **已解决：开关像素问题** 将 `开关组件修复-Switch Fix.css` 的内容复制到现有 `css` 的末尾即可对齐开关像素。
   <img src="https://github.com/user-attachments/assets/a1847752-2ee5-43e2-9963-2b99b7aeb0b9" width="120" />
 
