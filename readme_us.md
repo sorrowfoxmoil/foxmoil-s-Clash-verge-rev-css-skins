@@ -137,11 +137,14 @@ Example: Black‑Red Theme
 <summary> <h2>⚠️ Known Issues</h2></summary>
 
 - **High Transparency**: Some components are too transparent, causing overlap.
-  <img src="https://github.com/user-attachments/assets/046396b3-355f-4e2d-8349-94d53ee91ee9" height="300" />
+
+<div>
+  <img src="https://github.com/user-attachments/assets/046396b3-355f-4e2d-8349-94d53ee91ee9" height="300" /></div>
 
 - **Fixed: Switch Rendering Issue** To align the switch pixels, copy the content of `Switch Fix.css` to the end of your existing CSS.
+<div>
   <img src="https://github.com/user-attachments/assets/a1847752-2ee5-43e2-9963-2b99b7aeb0b9" width="120" />
-
+</div>
 - **Border Issues**: Border rendering issues on the settings page for some components.
   <img src="https://github.com/user-attachments/assets/bb839306-e53b-4e32-a681-b3d9493e0b71" width="500" />
 </details>
