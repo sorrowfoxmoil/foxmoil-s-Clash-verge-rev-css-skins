@@ -141,8 +141,9 @@
  <img src="https://github.com/user-attachments/assets/046396b3-355f-4e2d-8349-94d53ee91ee9" height="300" />
 </div>
 - **已解决：开关像素问题** 将 `开关组件修复-Switch Fix.css` 的内容复制到现有 `css` 的末尾即可对齐开关像素。
-  <img src="https://github.com/user-attachments/assets/a1847752-2ee5-43e2-9963-2b99b7aeb0b9" width="120" />
-
+<div> 
+ <img src="https://github.com/user-attachments/assets/a1847752-2ee5-43e2-9963-2b99b7aeb0b9" width="120" />
+</div>
 - **边框异常**：设置页面部分组件边框渲染异常  
   <img src="https://github.com/user-attachments/assets/bb839306-e53b-4e32-a681-b3d9493e0b71" width="500" />
 </details>
